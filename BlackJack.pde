@@ -3,6 +3,7 @@ int cardHeight = 210;
 int coinDia = 100;
 int textSize = 30;
 int blackJack = 21;
+color green = color(50, 210, 0);
 
 int cardCountP = 2;        //cards on player's hand
 int cardCountD = 2;        //cards on dealer's hand
@@ -17,7 +18,7 @@ void setup() {
 
   betting.x = width / 2;
   betting.y = height - 40;
-  betting.col = color(0, 255, 0);
+  betting.col = color(green);
   betting.margin = 10;
   betting.padding = 5;
 
@@ -40,19 +41,19 @@ void draw() {
 
   //--------------------BOARD---------------------
   //Draws player money display
-  stroke(0, 255, 0);
+  stroke(green);
   noFill();
   textAlign(CENTER);
   line(width - int(coinDia * 5 * 1.2), height - 180, width - int(coinDia * 1.5), height - 180);
   triangle(width - int(coinDia * 5 * 1.2), height - 180 - 25, width - int(coinDia * 1.5), height - 180 - 25, width - int(coinDia * 3.8), height - 200 - 25);
-  fill(0, 255, 0);
+  fill(green);
   text(("money: " + money), width - int(coinDia * 3.8), height - 187);
 
   //Draws betted money display
   noFill();
   line(int(coinDia * 5 * 1.2), height - 180, int(coinDia * 1.5), height - 180);
   triangle(int(coinDia * 5 * 1.2), height - 200 - 25, int(coinDia * 1.5), height - 200 - 25, int(coinDia * 3.8), height - 180 - 25); 
-  fill(0, 255, 0);
+  fill(green);
   text(("bet: " + betting.bet), int(coinDia * 3.8), height - 187);
 
   //Tutorial text
@@ -162,7 +163,7 @@ void draw() {
   //----------------Money system---------------------
   //Number input by keyboard, confirms bet if amount is under what the player has.
   betting.disp();
-  if (button(width / 2 - 105 / 2, height - 45 - 30, 105, 25, color(0, 255, 0), "Confirm bet", true)) {
+  if (button(width / 2 - 105 / 2, height - 45 - 30, 105, 25, color(green), "Confirm bet", true)) {
     if (money - int(betting.getVal()) >= 0) {
       betting.bet += int(betting.getVal());
       money -= int(betting.getVal());
